@@ -18,7 +18,7 @@ class PuppeteerEntity::ScreenshotTest < Minitest::Test
   end
 
   def test_jpeg_screenshot
-    args = { url: "https://www.example.com", options: { type: :jpg, quality: 80 } }
+    args = { url: "https://www.example.com", options: { type: :jpeg, quality: 80 } }
     entity = PuppeteerEntity::Screenshot.new(args)
 
     response = entity.response
