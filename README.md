@@ -1,28 +1,30 @@
 # PuppeteerEntity
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/puppeteer_entity`. To experiment with that code, run `bin/console` for an interactive prompt.
+PuppeteerEntity is a Ruby gem that provides a simple and intuitive interface for interacting with Puppeteer, a headless Chrome browser. It allows you to take screenshots, capture content, and perform other actions on web pages.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
-Install the gem and add to the application's Gemfile by executing:
+To install PuppeteerEntity, add it to your application's Gemfile and run `bundle install`:
 
 ```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+bundle add puppeteer_entity
 ```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+If you're not using Bundler, you can install the gem directly:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+gem install puppeteer_entity
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+To use PuppeteerEntity, create a new instance of the `PuppeteerEntity::Screenshot` or `PuppeteerEntity::Content` class, passing the necessary arguments. Then, call the `response` method on the instance to get the HTTP response.
+
+```ruby
+args = { url: "https://example.com" }
+entity = PuppeteerEntity::Screenshot.new(args)
+response = entity.response
+```
 
 ## Development
 
