@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       browserless:
-        image: ghcr.io/browserless/chromium:v2.4.0
+        image: ghcr.io/browserless/chromium:v2.21.1
         env:
           PORT: 4444
         ports:
