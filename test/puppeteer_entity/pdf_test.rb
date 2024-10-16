@@ -15,8 +15,8 @@ class PuppeteerEntity::PdfTest < Minitest::Test
     refute_empty response.body.to_s
     body_string = response.body.to_s
     assert_equal "%PDF-", body_string[0, 5]
-    assert_match /%EOF\s*\z/, body_string
-    assert body_string.bytesize.between?(1000, 10_000_000), "PDF file size is not within the expected range"
+    assert_match (/%EOF\s*\z/), body_string
+    assert body_string.bytesize.between?(1000, 10_000_000)
   end
 
   def test_raises_error_when_url_is_invalid
@@ -48,7 +48,7 @@ class PuppeteerEntity::PdfTest < Minitest::Test
 
     assert_equal 200, response.status
     assert_equal "application/pdf", response.content_type.mime_type
-    assert_match /Page 1 of \d+/, pdf_content.pages.first.text
-    assert_match /Footer/, pdf_content.pages.first.text
+    assert_match (/Page 1 of \d+/), pdf_content.pages.first.text
+    assert_match (/Footer/), pdf_content.pages.first.text
   end
 end
