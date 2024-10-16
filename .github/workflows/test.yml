@@ -12,6 +12,13 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      browserless:
+        image: browserless/browserless:18.0.0
+        ports:
+          - 3000:3000
+    env:
+      BROWSERLESS_URL: http://localhost:3000
     strategy:
       matrix:
         ruby-version: ['3.0', '3.1', '3.2']
@@ -23,7 +30,5 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Start container
-      run: docker-compose -f "docker-compose.yml" up -d
     - name: Run tests
       run: bundle exec rake
