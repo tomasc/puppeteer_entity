@@ -1,6 +1,6 @@
 # PuppeteerEntity
 
-PuppeteerEntity is a Ruby gem that provides a simple and intuitive interface for interacting with Puppeteer, a headless Chrome browser. It allows you to take screenshots, capture content, and perform other actions on web pages.
+`PuppeteerEntity` is a Ruby gem that provides a simple and intuitive interface for interacting with Puppeteer, a headless Chrome browser. It allows you to take screenshots, capture content, and perform other actions on web pages.
 
 ## Installation
 
