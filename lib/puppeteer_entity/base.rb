@@ -6,7 +6,6 @@ require "active_support/core_ext/hash"
 
 module PuppeteerEntity
   class Base < Dry::Struct
-
     attribute? :browserless_url, Types::URL.default { ENV["BROWSERLESS_URL"] }
     attribute? :retry_limit, Types::Integer.default { 3 }
 
