@@ -1,25 +1,54 @@
 # frozen_string_literal: true
 require "test_helper"
+require "pdf-reader"
 
 class PuppeteerEntity::PdfTest < Minitest::Test
   def test_pdf
     args = { url: "https://www.example.com" }
     entity = PuppeteerEntity::Pdf.new(args)
 
-    entity.file.refresh_metadata!
-    entity.refresh_metadata!
+    response = entity.response
 
-    assert_equal %w[filename height mime_type page_count page_dimensions page_numbers page_rotations size width], entity.file.metadata.keys.sort
-    assert_predicate entity.file.metadata["filename"], :present?
-    assert_equal "application/pdf", entity.file.metadata["mime_type"]
-    assert_equal 1, entity.file.metadata["page_count"]
-    assert_equal [[215.89999999999998, 279.4]], entity.file.metadata["page_dimensions"]
-    assert_equal [1], entity.file.metadata["page_numbers"]
-    assert_equal [0.0], entity.file.metadata["page_rotations"]
-    assert_equal 612, entity.file.metadata["width"]
-    assert_equal 792, entity.file.metadata["height"]
-    assert_operator entity.file.metadata["size"], :>, 1_000
-    assert_equal "application/pdf", entity.file.mime_type
-    assert_operator entity.file.size, :>, 0
+    assert_instance_of HTTP::Response, response
+    assert_equal 200, response.status
+    assert_equal "application/pdf", response.content_type.mime_type
+    refute_empty response.body.to_s
+    body_string = response.body.to_s
+    assert_equal "%PDF-", body_string[0, 5]
+    assert_match /%EOF\s*\z/, body_string
+    assert body_string.bytesize.between?(1000, 10_000_000), "PDF file size is not within the expected range"
+  end
+
+  def test_raises_error_when_url_is_invalid
+    args = { url: "https://www.example.io/not-found" }
+    entity = PuppeteerEntity::Pdf.new(args)
+
+    assert_raises(PuppeteerEntity::RequestError) do
+      entity.response
+    end
+  end
+
+  def test_pdf_with_header_and_footer
+    args = {
+      url: "https://www.example.com",
+      options: {
+        display_header_footer: true,
+        header_template: "<div style='font-size: 10px;'>Page <span class='pageNumber'></span> of <span class='totalPages'></span></div>",
+        footer_template: "<div style='font-size: 10px;'>Footer</div>",
+        margin: {
+          top: "1cm",
+          bottom: "1cm"
+        }
+      }
+    }
+    entity = PuppeteerEntity::Pdf.new(args)
+
+    response = entity.response
+    pdf_content = PDF::Reader.new(StringIO.new(response.body.to_s))
+
+    assert_equal 200, response.status
+    assert_equal "application/pdf", response.content_type.mime_type
+    assert_match /Page 1 of \d+/, pdf_content.pages.first.text
+    assert_match /Footer/, pdf_content.pages.first.text
   end
 end

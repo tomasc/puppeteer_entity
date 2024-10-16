@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class PuppeteerEntity
-  class Content < PuppeteerEntity
+module PuppeteerEntity
+  class Content < Base
     attributes_from Attributes::Content
 
     transform_keys(&:to_sym)

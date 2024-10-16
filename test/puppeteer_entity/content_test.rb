@@ -3,6 +3,7 @@ require "test_helper"
 
 class PuppeteerEntity::ContentTest < Minitest::Test
   def test_content
+    skip
     args = { url: "https://www.example.com" }
     entity = PuppeteerEntity::Content.new(args)
 

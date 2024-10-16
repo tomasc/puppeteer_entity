@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
     ls.readlines("\x0", chomp: true).reject do |f|
       (f == gemspec) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git appveyor Gemfile])
+        f.start_with?(*%w[bin/ test/ spec/ features/ .git Gemfile])
     end
   end
   spec.bindir = "exe"
@@ -35,5 +35,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dry-struct"
   spec.add_dependency "http"
   spec.add_dependency "zeitwerk"
+  spec.add_dependency "activesupport"
+
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "faker"
+  spec.add_development_dependency "pdf-reader"
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class PuppeteerEntity
-  class Screenshot < PuppeteerEntity
+module PuppeteerEntity
+  class Screenshot < Base
     attributes_from Attributes::Screenshot
 
     transform_keys(&:to_sym)

@@ -3,5 +3,9 @@
 require "dry/types"
 
 module PuppeteerEntity
-  Types = Dry.Types
+  module Types
+    include Dry.Types
+
+    URL = Strict::String.constrained(format: URI::DEFAULT_PARSER.make_regexp)
+  end
 end

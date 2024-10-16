@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class PuppeteerEntity
-  class Pdf < PuppeteerEntity
+module PuppeteerEntity
+  class Pdf < Base
     attributes_from Attributes::Pdf
 
     transform_keys(&:to_sym)
