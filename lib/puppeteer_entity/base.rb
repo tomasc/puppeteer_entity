@@ -7,12 +7,7 @@ require "active_support/core_ext/hash"
 module PuppeteerEntity
   class Base < Dry::Struct
 
-    attr_writer :file_data
-
-    attribute? :filename, Types::Coercible::String.optional
-
     attribute? :browserless_url, Types::URL.default { ENV["BROWSERLESS_URL"] }
-    attribute? :cache_key, Types::Coercible::String.optional
     attribute? :retry_limit, Types::Integer.default { 3 }
 
     attributes_from Attributes::Query
