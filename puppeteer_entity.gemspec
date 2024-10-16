@@ -32,9 +32,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "dry-initializer"
-  spec.add_dependency "dry-transformer"
+  spec.add_dependency "dry-struct"
   spec.add_dependency "http"
-  spec.add_dependency "universalid"
   spec.add_dependency "zeitwerk"
+  spec.add_development_dependency "minitest", "~> 5.0"
 end
