@@ -1,5 +1,7 @@
 # PuppeteerEntity
 
+[![Test](https://github.com/tomasc/puppeteer_entity/actions/workflows/test.yml/badge.svg)](https://github.com/tomasc/puppeteer_entity/actions/workflows/test.yml)
+
 `PuppeteerEntity` is a Ruby gem that provides a simple and intuitive interface for interacting with Puppeteer, a headless Chrome browser. It allows you to take screenshots, capture content, and perform other actions on web pages.
 
 ## Installation
