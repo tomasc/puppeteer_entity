@@ -38,11 +38,11 @@ module PuppeteerEntity
         attribute? :scale, Types::Float.optional.constrained(included_in: 0.1..2.0)
         attribute? :display_header_footer, Types::Bool.optional
         # HTML template for the print header. Should be valid HTML with the following classes used to inject values into them:
-        # * date formatted print date
-        # * title document title
-        # * url document location
-        # * pageNumber current page number
-        # * totalPages total pages in the document
+        # * "date" formatted print date
+        # * "title" document title
+        # * "url" document location
+        # * "pageNumber" current page number
+        # * "totalPages" total pages in the document
         attribute? :header_template, Types::Coercible::String.optional
         # HTML template for the print footer. Has the same constraints and support for special classes as {@link PDFOptionsPDFOptions.headerTemplate}.
         attribute? :footer_template, Types::Coercible::String.optional
