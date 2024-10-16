@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       browserless:
-        image: browserless/browserless:18.0.0
+        image: browserless/chrome
         ports:
           - 3000:3000
     env:
