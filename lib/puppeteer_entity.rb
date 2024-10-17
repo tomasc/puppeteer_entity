@@ -11,4 +11,3 @@ module PuppeteerEntity
 
   class IdLengthError < Error; end
 end
-

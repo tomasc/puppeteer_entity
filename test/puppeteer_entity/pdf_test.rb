@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "test_helper"
 require "pdf-reader"
 
@@ -12,7 +13,7 @@ class PuppeteerEntity::PdfTest < Minitest::Test
     assert_instance_of HTTP::Response, response
     assert_equal 200, response.status
     assert_equal "application/pdf", response.content_type.mime_type
-    refute_empty response.body.to_s
+    assert_not_empty response.body.to_s
     body_string = response.body.to_s
     assert_equal "%PDF-", body_string[0, 5]
     assert_match (/%EOF\s*\z/), body_string

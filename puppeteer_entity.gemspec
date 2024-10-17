@@ -5,8 +5,8 @@ require_relative "lib/puppeteer_entity/version"
 Gem::Specification.new do |spec|
   spec.name = "puppeteer_entity"
   spec.version = PuppeteerEntity::VERSION
-  spec.authors = ["Tomas Celizna", "Asger Behncke Jacobsen"]
-  spec.email = ["tomas.celizna@gmail.com", "a@asgerbehnckejacobsen.dk"]
+  spec.authors = [ "Tomas Celizna", "Asger Behncke Jacobsen" ]
+  spec.email = [ "mail@tomascelizna.com", "a@asgerbehnckejacobsen.dk" ]
 
   spec.summary = "A Ruby gem for interacting with Puppeteer"
   spec.description = "PuppeteerEntity provides a simple and intuitive interface for interacting with Puppeteer, a headless Chrome browser."
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   end
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = [ "lib" ]
 
   spec.add_dependency "dry-struct"
   spec.add_dependency "http"
@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "faker"
   spec.add_development_dependency "pdf-reader"
+  spec.add_development_dependency "rubocop-rails-omakase"
 end

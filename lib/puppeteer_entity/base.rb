@@ -17,7 +17,7 @@ module PuppeteerEntity
       retries = 0
       begin
         HTTP.headers(response_headers)
-            .post(url, json: json)
+            .post(url, json:)
             .tap do |res|
           raise RequestError.new(res.body.to_s) unless res.status.success?
         rescue RequestError => e
@@ -31,7 +31,7 @@ module PuppeteerEntity
 
     def response_headers
       {
-        content_type: "application/json",
+        content_type: "application/json"
       }
     end
 
