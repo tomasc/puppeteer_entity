@@ -4,9 +4,24 @@ module PuppeteerEntity
   class Screenshot < Base
     attributes_from Attributes::Screenshot
 
+    MIME_TYPES = {
+      "png" => "image/png",
+      "jpeg" => "image/jpeg",
+      "webp" => "image/webp",
+    }.freeze
+
     transform_keys(&:to_sym)
 
     private
+
+    def response_headers
+      super.merge(accept: mime_type)
+    end
+
+    def mime_type
+      type = to_h.dig(:options, :type) || "png"
+      MIME_TYPES[type.downcase]
+    end
 
     def as_body_json
       to_h

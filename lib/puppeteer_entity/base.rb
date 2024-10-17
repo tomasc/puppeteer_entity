@@ -16,7 +16,7 @@ module PuppeteerEntity
       json = as_body_json
       retries = 0
       begin
-        HTTP.headers(content_type: "application/json")
+        HTTP.headers(response_headers)
             .post(url, json: json)
             .tap do |res|
           raise RequestError.new(res.body.to_s) unless res.status.success?
@@ -28,6 +28,12 @@ module PuppeteerEntity
     end
 
     private
+
+    def response_headers
+      {
+        content_type: "application/json",
+      }
+    end
 
     def browserless_uri
       raise NotImplementedError
