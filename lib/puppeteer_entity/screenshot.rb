@@ -7,7 +7,7 @@ module PuppeteerEntity
     MIME_TYPES = {
       "png" => "image/png",
       "jpeg" => "image/jpeg",
-      "webp" => "image/webp",
+      "webp" => "image/webp"
     }.freeze
 
     transform_keys(&:to_sym)
@@ -15,8 +15,9 @@ module PuppeteerEntity
     private
 
     def response_headers
+      type = to_h.dig(:options, :type) || "png"
       super.merge(
-        accept: MIME_TYPES[options.type.downcase]
+        accept: MIME_TYPES[type.downcase]
       )
     end
 
