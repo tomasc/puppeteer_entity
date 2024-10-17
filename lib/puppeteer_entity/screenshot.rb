@@ -15,12 +15,9 @@ module PuppeteerEntity
     private
 
     def response_headers
-      super.merge(accept: mime_type)
-    end
-
-    def mime_type
-      type = to_h.dig(:options, :type) || "png"
-      MIME_TYPES[type.downcase]
+      super.merge(
+        accept: MIME_TYPES[options.type.downcase]
+      )
     end
 
     def as_body_json

@@ -8,6 +8,12 @@ module PuppeteerEntity
 
     private
 
+    def response_headers
+      super.merge(
+        accept: "application/pdf"
+      )
+    end
+
     def as_body_json
       to_h
         .slice(*Attributes::Pdf.attribute_names)
