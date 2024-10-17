@@ -1,8 +1,7 @@
-version: '3'
 services:
   browserless:
-    image: browserless/chrome
+    image: ghcr.io/browserless/chromium:v2.21.1
     ports:
-      - "3000:3000"
+      - "4444:3000"
     environment:
       - MAX_CONCURRENT_SESSIONS=10
