@@ -36,8 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport"
 
   spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "minitest-spec-rails", "~> 7.3"
   spec.add_development_dependency "faker"
   spec.add_development_dependency "pdf-reader"
-  spec.add_development_dependency "rubocop-rails-omakase"
+  spec.add_development_dependency "rubocop"
 end
